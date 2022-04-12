@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import Home1 from './components/homeContent';
-import { add } from '../../../utils/Util';
+import { add } from '../../../utils/util';
 import styles from './index.less';
 import { Button } from 'antd';
 
