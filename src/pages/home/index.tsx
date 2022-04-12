@@ -5,7 +5,6 @@ import styles from './index.less';
 import { Button } from 'antd';
 
 import * as React from 'react';
-import e from '@umijs/server/node_modules/@types/express';
 import { history } from 'umi';
 
 interface IHomeProps {
@@ -40,11 +39,11 @@ const Home: React.FunctionComponent<IHomeProps> = (props) => {
   }
 
   return show ? (
-    <div className="home-container">
+    <div className={styles.homeContainer}>
       <Button onClick={deleteCount}>还原</Button>
     </div>
   ) : (
-    <div className="home-container">
+    <div className={styles.homeContainer}>
       <span>home父组件的内容数字是{count}</span>
       <Button onClick={addCount}>增加</Button>
       <Home1 childcount={count}></Home1>
