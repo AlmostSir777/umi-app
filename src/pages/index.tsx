@@ -20,14 +20,14 @@ export default function IndexPage() {
   }
 
   return show ? (
-    <div>
+    <div className={styles.container}>
       <h1 className={styles.title}>Page index</h1>
-      <Button type="primary" onClick={gotoHome}>
+      <Button className={styles.button} type="primary" onClick={gotoHome}>
         跳转
       </Button>
     </div>
   ) : (
-    <div>
+    <div className={styles.container}>
       <h1 className={styles.title}>Page index</h1>
       <PageLoading />
     </div>

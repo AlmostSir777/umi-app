@@ -40,12 +40,16 @@ const Home: React.FunctionComponent<IHomeProps> = (props) => {
 
   return show ? (
     <div className={styles.homeContainer}>
-      <Button onClick={deleteCount}>还原</Button>
+      <Button className={styles.button} onClick={deleteCount}>
+        还原
+      </Button>
     </div>
   ) : (
     <div className={styles.homeContainer}>
-      <span>home父组件的内容数字是{count}</span>
-      <Button onClick={addCount}>增加</Button>
+      <span className={styles.content}>home父组件的内容数字是{count}</span>
+      <Button className={styles.button} onClick={addCount}>
+        增加
+      </Button>
       <Home1 childcount={count}></Home1>
     </div>
   );
