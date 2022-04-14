@@ -24,7 +24,7 @@ const Home: React.FunctionComponent<IHomeProps> = (props) => {
     var num = add(count, -10);
     setCount(num);
     checkCount(num);
-    // history.goBack();
+    history.goBack();
   }
 
   function checkCount(num: number) {

@@ -84,3 +84,5 @@ const LoginModel: LoginModelType = {
     },
   },
 };
+
+export default LoginModel;

@@ -12,23 +12,24 @@ export default function IndexPage() {
   }
 
   setTimeout(() => {
-    showContent();
+    // showContent();
+    gotoHome();
   }, 3000);
 
   function gotoHome() {
-    history.push('./home');
+    history.push('./login');
   }
 
   return show ? (
     <div className={styles.container}>
-      <h1 className={styles.title}>Page index</h1>
+      <h1 className={styles.title}>首页</h1>
       <Button className={styles.button} type="primary" onClick={gotoHome}>
-        跳转
+        跳转详情
       </Button>
     </div>
   ) : (
     <div className={styles.container}>
-      <h1 className={styles.title}>Page index</h1>
+      {/* <h1 className={styles.title}>首页</h1> */}
       <PageLoading />
     </div>
   );
