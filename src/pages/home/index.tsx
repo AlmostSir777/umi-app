@@ -4,40 +4,41 @@ import { add } from '../../../utils/util';
 import styles from './index.less';
 import { Button } from 'antd';
 
+import type { FC } from 'react';
+import type { Dispatch } from 'umi';
+import { connect } from 'umi';
+
 import * as React from 'react';
 import { history } from 'umi';
 
-interface IHomeProps {
-  childCount: number;
+interface HomeProps {
+  dispatch: Dispatch;
+  home: any;
+  loading: boolean;
 }
 
-const Home: React.FunctionComponent<IHomeProps> = (props) => {
-  const [count, setCount] = useState<number>(10);
-  const [show, setShow] = useState<boolean>(false);
-  function addCount() {
-    var num = add(count, 10);
-    setCount(num);
-    checkCount(num);
-  }
+const HomeView: FC<HomeProps> = ({ home, dispatch, loading }) => {
+  const { count, show } = home;
 
-  function deleteCount() {
-    var num = add(count, -10);
-    setCount(num);
-    checkCount(num);
-    history.goBack();
-  }
+  const addCount = () => {
+    console.log('点击了增加');
+    dispatch({
+      type: 'home/addCount',
+      payload: {
+        count: count,
+      },
+    });
+  };
 
-  function checkCount(num: number) {
-    if (num >= 100) {
-      if (!show) setShow(true);
-    } else {
-      if (show) {
-        setCount(10);
-        setShow(false);
-      }
-    }
-  }
-
+  const deleteCount = () => {
+    console.log('点击了back');
+    dispatch({
+      type: 'home/back',
+      payload: {
+        count: count,
+      },
+    });
+  };
   return show ? (
     <div className={styles.homeContainer}>
       <Button className={styles.button} onClick={deleteCount}>
@@ -55,4 +56,7 @@ const Home: React.FunctionComponent<IHomeProps> = (props) => {
   );
 };
 
-export default Home;
+export default connect(({ home, loading }: { home: any; loading: any }) => ({
+  home,
+  loading: loading.models.home,
+}))(HomeView);
